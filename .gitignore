@@ -31,3 +31,7 @@ backend/prisma/*.db-journal
 # Cache
 .cache/
 .turbo/
+
+# Local docs and assets (not for git)
+doc/
+imagens/
