@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { Card, Badge, Spinner, EmptyState } from '@/components/ui';
 import { adminService } from '@/services/admin.service';
-import { formatDateTime, formatDate } from '@/utils/format';
+import { formatDate } from '@/utils/format';
 import styles from './AdminValidations.module.scss';
 
 const STATUS_MAP: Record<string, { label: string; variant: 'success' | 'warning' | 'error' | 'neutral' }> = {

@@ -14,7 +14,6 @@ import {
 import { Card, CardBody, Button, Input, Spinner } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 import { partnerService } from '@/services/partner.service';
-import { formatPhone } from '@/utils/format';
 import styles from './PartnerProfile.module.scss';
 
 export default function PartnerProfile() {

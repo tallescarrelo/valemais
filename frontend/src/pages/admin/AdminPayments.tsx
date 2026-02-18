@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { Card, CardBody, Badge, Spinner, EmptyState } from '@/components/ui';
 import { adminService } from '@/services/admin.service';
-import { formatCurrency, formatDate, formatDateTime } from '@/utils/format';
+import { formatCurrency, formatDate } from '@/utils/format';
 import styles from './AdminPayments.module.scss';
 
 const STATUS_MAP: Record<string, { label: string; variant: 'success' | 'warning' | 'error' | 'neutral' }> = {

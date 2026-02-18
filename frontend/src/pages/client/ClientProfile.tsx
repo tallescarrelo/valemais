@@ -13,7 +13,7 @@ import {
 import { Card, CardBody, Button, Input, Spinner } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 import { clientService } from '@/services/client.service';
-import { formatCPF, formatPhone } from '@/utils/format';
+import { formatCPF } from '@/utils/format';
 import styles from './ClientProfile.module.scss';
 
 export default function ClientProfile() {

@@ -5,7 +5,6 @@ import {
   ToggleLeft,
   ToggleRight,
   Package,
-  X,
 } from 'lucide-react';
 import {
   Card,

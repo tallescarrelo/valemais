@@ -4,7 +4,6 @@ import {
   ChevronLeft,
   ChevronRight,
   User,
-  CreditCard,
   Tag,
   Calendar,
 } from 'lucide-react';

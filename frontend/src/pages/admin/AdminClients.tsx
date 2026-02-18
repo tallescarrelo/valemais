@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import {
   Users,
-  Search,
   Eye,
   ChevronLeft,
   ChevronRight,
-  X,
   Mail,
   Phone,
   CreditCard,
@@ -13,9 +11,6 @@ import {
 } from 'lucide-react';
 import {
   Card,
-  CardBody,
-  Button,
-  Input,
   Select,
   Badge,
   Spinner,
@@ -23,7 +18,7 @@ import {
   Modal,
 } from '@/components/ui';
 import { adminService } from '@/services/admin.service';
-import { formatDate, formatCPF, formatPhone, formatCurrency } from '@/utils/format';
+import { formatDate, formatCPF, formatPhone } from '@/utils/format';
 import styles from './AdminClients.module.scss';
 
 const STATUS_MAP: Record<string, { label: string; variant: 'success' | 'warning' | 'error' | 'neutral' }> = {

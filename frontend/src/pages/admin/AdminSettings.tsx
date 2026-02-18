@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Settings, Save, Shield, Bell, Globe, Palette } from 'lucide-react';
+import { Save, Shield, Bell, Globe, Palette } from 'lucide-react';
 import { Card, CardBody, Input, Button } from '@/components/ui';
 import styles from './AdminSettings.module.scss';
 
