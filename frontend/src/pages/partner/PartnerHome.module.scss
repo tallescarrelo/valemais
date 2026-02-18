@@ -1,0 +1,270 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.greeting {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Stats Grid
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+}
+
+.statCard {
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.statIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  background: $gray-100;
+  color: $gray-600;
+  margin-bottom: $space-3;
+  flex-shrink: 0;
+}
+
+.statIconAccent {
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+.statIconInfo {
+  background: $color-info-bg;
+  color: $color-info;
+}
+
+.statIconStatus {
+  background: $color-warning-bg;
+  color: $color-warning;
+}
+
+.statInfo {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.statValue {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-xl;
+  }
+}
+
+.statLabel {
+  @include label;
+  color: $gray-400;
+  font-size: $text-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// Quick Actions
+.quickActions {
+  display: flex;
+  gap: $space-4;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.actionBtn {
+  flex: 1;
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-5 $space-4;
+  background: $color-white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $gray-700;
+
+  &:hover {
+    border-color: $color-accent;
+    box-shadow: $shadow-md;
+    color: $color-accent;
+
+    .actionIcon {
+      background: $color-accent-bg;
+      color: $color-accent;
+    }
+  }
+}
+
+.actionIcon {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: $gray-100;
+  color: $gray-600;
+  transition: all $transition-fast;
+}
+
+.actionIconAccent {
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+// Validations Section
+.validationsCard {
+  // spans full width
+}
+
+.sectionHeaderRow {
+  @include flex-between;
+  margin-bottom: $space-4;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.sectionIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $color-accent-bg;
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  @include heading($text-base, $weight-semibold);
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $color-accent;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.emptyValidations {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-8 $space-4;
+  color: $gray-400;
+
+  p {
+    margin-top: $space-3;
+    font-weight: $weight-medium;
+    color: $gray-600;
+    font-size: $text-base;
+  }
+
+  span {
+    font-size: $text-sm;
+    color: $gray-400;
+    margin-top: $space-1;
+  }
+}
+
+.validationsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.validationItem {
+  @include flex-between;
+  padding: $space-3 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-100;
+  }
+}
+
+.validationInfo {
+  @include flex-col;
+  gap: $space-1;
+  min-width: 0;
+  flex: 1;
+}
+
+.validationClient {
+  font-weight: $weight-medium;
+  font-size: $text-sm;
+  color: $gray-800;
+  @include truncate;
+}
+
+.validationDate {
+  font-size: $text-xs;
+  color: $gray-400;
+}
+
+.validationRight {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-shrink: 0;
+}
+
+.validationDiscount {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-sm;
+  color: $color-accent;
+}

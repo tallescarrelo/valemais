@@ -1,0 +1,60 @@
+@use '../../../styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-family: $font-body;
+  font-weight: $weight-medium;
+  border-radius: $radius-full;
+  white-space: nowrap;
+
+  &.sm {
+    padding: 2px $space-2;
+    font-size: $text-xs;
+  }
+
+  &.md {
+    padding: $space-1 $space-3;
+    font-size: $text-xs;
+  }
+
+  // Variants
+  &.success {
+    background: $color-success-bg;
+    color: $color-success;
+  }
+
+  &.error {
+    background: $color-error-bg;
+    color: $color-error;
+  }
+
+  &.warning {
+    background: $color-warning-bg;
+    color: $color-warning;
+  }
+
+  &.info {
+    background: $color-info-bg;
+    color: $color-info;
+  }
+
+  &.neutral {
+    background: $gray-100;
+    color: $gray-600;
+  }
+
+  &.accent {
+    background: $color-accent-bg;
+    color: $color-accent;
+  }
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}

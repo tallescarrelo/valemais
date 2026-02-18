@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  @include flex-col;
+  gap: $space-1;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.label {
+  @include label;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  @include input-base;
+
+  &.hasIcon {
+    padding-left: $space-10;
+  }
+
+  &.hasToggle {
+    padding-right: $space-10;
+  }
+
+  &.hasError {
+    border-color: $color-error;
+
+    &:focus {
+      border-color: $color-error;
+      box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  left: $space-3;
+  color: $gray-400;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.togglePassword {
+  position: absolute;
+  right: $space-3;
+  color: $gray-400;
+  display: flex;
+  align-items: center;
+  padding: $space-1;
+  border-radius: $radius-sm;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $gray-600;
+  }
+}
+
+.error {
+  font-size: $text-xs;
+  color: $color-error;
+  font-weight: $weight-medium;
+}
+
+.hint {
+  font-size: $text-xs;
+  color: $gray-500;
+}

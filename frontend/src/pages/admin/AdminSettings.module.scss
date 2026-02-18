@@ -1,0 +1,101 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+.header {
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+.alert {
+  padding: $space-3 $space-4;
+  background: $color-success-bg;
+  color: $color-success;
+  border-radius: $radius-md;
+  font-weight: $weight-medium;
+  font-size: $text-sm;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-5;
+  color: $gray-700;
+
+  h2 {
+    @include heading($text-lg, $weight-semibold);
+  }
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  margin-bottom: $space-4;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.toggleList {
+  @include flex-col;
+  gap: $space-3;
+}
+
+.toggleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-4;
+  background: $gray-50;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $gray-100;
+  }
+
+  input[type='checkbox'] {
+    margin-top: $space-1;
+    width: 18px;
+    height: 18px;
+    accent-color: $color-accent;
+    cursor: pointer;
+  }
+
+  strong {
+    display: block;
+    @include body($text-sm, $weight-semibold);
+    color: $gray-900;
+    margin-bottom: $space-1;
+  }
+
+  p {
+    @include body($text-sm);
+    color: $gray-500;
+    margin: 0;
+  }
+}
+
+.saveBar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $space-4;
+  border-top: 1px solid $gray-200;
+}

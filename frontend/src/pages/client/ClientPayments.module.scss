@@ -1,0 +1,217 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+.totalLabel {
+  @include label;
+  color: $gray-400;
+  font-size: $text-sm;
+  padding: $space-1 $space-3;
+  background: $gray-100;
+  border-radius: $radius-full;
+}
+
+// Table (Desktop)
+.tableCard {
+  @include mobile {
+    display: none;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    th {
+      @include label;
+      color: $gray-400;
+      font-size: $text-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+      padding: $space-3 $space-5;
+      border-bottom: 1px solid $gray-200;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: background-color $transition-fast;
+
+      &:hover {
+        background-color: $gray-50;
+      }
+
+      &:not(:last-child) {
+        td {
+          border-bottom: 1px solid $gray-100;
+        }
+      }
+    }
+
+    td {
+      padding: $space-4 $space-5;
+      font-size: $text-sm;
+      color: $gray-700;
+      vertical-align: middle;
+    }
+  }
+}
+
+.tableLoading {
+  @include flex-center;
+  padding: $space-8;
+}
+
+.dateCell {
+  color: $gray-500;
+  font-size: $text-sm;
+  white-space: nowrap;
+}
+
+.descriptionCell {
+  font-weight: $weight-medium;
+  color: $gray-800;
+}
+
+.amountCell {
+  font-family: $font-display;
+  font-weight: $weight-semibold;
+  color: $gray-900;
+  white-space: nowrap;
+}
+
+// Mobile Cards
+.mobileCards {
+  display: none;
+  @include flex-col;
+  gap: $space-3;
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+.paymentCard {
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.paymentCardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.paymentIcon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  background: $gray-100;
+  color: $gray-600;
+  flex-shrink: 0;
+}
+
+.paymentInfo {
+  @include flex-col;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.paymentDesc {
+  font-weight: $weight-medium;
+  font-size: $text-sm;
+  color: $gray-800;
+  @include truncate;
+}
+
+.paymentDate {
+  font-size: $text-xs;
+  color: $gray-400;
+}
+
+.paymentCardFooter {
+  @include flex-between;
+  margin-top: $space-3;
+  padding-top: $space-3;
+  border-top: 1px solid $gray-100;
+}
+
+.paymentAmount {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  font-size: $text-base;
+  color: $gray-900;
+}
+
+// Pagination
+.pagination {
+  @include flex-between;
+  padding: $space-4 0;
+}
+
+.pageBtn {
+  @include button-base;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  font-size: $text-sm;
+  color: $gray-600;
+  background: $color-white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover:not(:disabled) {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.pageInfo {
+  font-size: $text-sm;
+  color: $gray-500;
+  font-weight: $weight-medium;
+}

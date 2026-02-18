@@ -1,0 +1,227 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ===================== PAGE =====================
+.page {
+  min-height: 100vh;
+  background: $gray-100;
+  @include flex-center;
+  padding: $space-6;
+
+  @include mobile {
+    padding: $space-4;
+    align-items: flex-start;
+    padding-top: $space-8;
+  }
+}
+
+// ===================== CARD =====================
+.card {
+  width: 100%;
+  max-width: 600px;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  padding: $space-10;
+
+  @include mobile {
+    padding: $space-6;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+  }
+}
+
+// ===================== LOGO =====================
+.logo {
+  text-align: center;
+  margin-bottom: $space-2;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+}
+
+// ===================== STEPPER =====================
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: $space-6 0 $space-6;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+}
+
+.stepCircle {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  border: 2px solid $gray-300;
+  color: $gray-400;
+  background: $color-white;
+  transition: all $transition-base;
+  flex-shrink: 0;
+}
+
+.stepActive {
+  border-color: $color-accent;
+  background: $color-accent;
+  color: $color-white;
+}
+
+.stepCompleted {
+  border-color: $color-accent;
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+.stepLine {
+  width: 48px;
+  height: 2px;
+  background: $gray-300;
+  margin: 0 $space-2;
+  transition: background $transition-base;
+
+  @include mobile {
+    width: 32px;
+  }
+}
+
+.stepLineCompleted {
+  background: $color-accent;
+}
+
+// ===================== HEADER =====================
+.header {
+  text-align: center;
+  margin-bottom: $space-6;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  margin-bottom: $space-1;
+}
+
+.subtitle {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $gray-500;
+}
+
+// ===================== ERROR ALERT =====================
+.errorAlert {
+  padding: $space-3 $space-4;
+  background: $color-error;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  border-radius: $radius-md;
+  line-height: $leading-normal;
+  margin-bottom: $space-4;
+}
+
+// ===================== FORM =====================
+.form {
+  @include flex-col;
+  gap: $space-5;
+}
+
+// ===================== GRID (Address) =====================
+.gridTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-5;
+  }
+}
+
+// ===================== ACTIONS =====================
+.actions {
+  display: flex;
+  gap: $space-4;
+  margin-top: $space-2;
+
+  // When there's only one button (step 1), make it full width
+  & > button:only-child,
+  & > :only-child {
+    flex: 1;
+  }
+
+  // When there are two buttons, distribute them
+  & > button:last-child:not(:only-child),
+  & > :last-child:not(:only-child) {
+    flex: 1;
+  }
+}
+
+// ===================== FOOTER =====================
+.footer {
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+  margin-top: $space-8;
+  padding-top: $space-6;
+  border-top: 1px solid $gray-200;
+}
+
+.footerText {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $gray-500;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    font-weight: $weight-semibold;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent-dark;
+      text-decoration: underline;
+    }
+  }
+}
+
+// ===================== SUCCESS SCREEN =====================
+.successScreen {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-8 0;
+  gap: $space-4;
+}
+
+.successIcon {
+  color: $color-accent;
+  margin-bottom: $space-2;
+}
+
+.successTitle {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+}
+
+.successMessage {
+  font-family: $font-body;
+  font-size: $text-base;
+  color: $gray-500;
+  line-height: $leading-relaxed;
+  max-width: 400px;
+  margin-bottom: $space-4;
+}

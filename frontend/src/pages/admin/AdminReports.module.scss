@@ -1,0 +1,109 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+.headerActions {
+  display: flex;
+  gap: $space-3;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.metricCard {
+  text-align: center;
+}
+
+.metricHeader {
+  @include flex-center;
+  margin-bottom: $space-3;
+}
+
+.metricIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-lg;
+
+  &.primary {
+    background: rgba($color-primary, 0.1);
+    color: $color-primary;
+  }
+
+  &.accent {
+    background: $color-accent-bg;
+    color: $color-accent;
+  }
+
+  &.info {
+    background: $color-info-bg;
+    color: $color-info;
+  }
+}
+
+.metricValue {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  margin-bottom: $space-1;
+}
+
+.metricLabel {
+  @include body($text-sm);
+  color: $gray-500;
+}
+
+.exportSection {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.exportTitle {
+  @include heading($text-lg, $weight-semibold);
+  margin-bottom: $space-1;
+}
+
+.exportDesc {
+  @include body($text-sm);
+  color: $gray-500;
+}
+
+.exportButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+}

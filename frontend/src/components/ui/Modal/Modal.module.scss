@@ -1,0 +1,109 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.portal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  pointer-events: none;
+}
+
+.modal {
+  position: relative;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-xl;
+  padding: $space-8;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+  pointer-events: all;
+
+  &.sm { width: 100%; max-width: 400px; }
+  &.md { width: 100%; max-width: 520px; }
+  &.lg { width: 100%; max-width: 680px; }
+}
+
+.close {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+  color: $gray-400;
+  padding: $space-1;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+  display: flex;
+
+  &:hover {
+    color: $gray-700;
+    background: $gray-100;
+  }
+}
+
+.iconWrapper {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto $space-5;
+
+  &.success {
+    background: $color-success-bg;
+    color: $color-success;
+  }
+
+  &.error {
+    background: $color-error-bg;
+    color: $color-error;
+  }
+
+  &.warning {
+    background: $color-warning-bg;
+    color: $color-warning;
+  }
+
+  &.info {
+    background: $color-info-bg;
+    color: $color-info;
+  }
+}
+
+.title {
+  @include heading($text-xl);
+  margin-bottom: $space-2;
+}
+
+.message {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-bottom: $space-6;
+}
+
+.content {
+  text-align: left;
+  margin-bottom: $space-6;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+  margin-top: $space-4;
+}

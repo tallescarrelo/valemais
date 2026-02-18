@@ -1,0 +1,56 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.wrapper {
+  @include flex-col;
+  gap: $space-1;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.label {
+  @include label;
+}
+
+.selectContainer {
+  position: relative;
+}
+
+.select {
+  @include input-base;
+  appearance: none;
+  padding-right: $space-10;
+  cursor: pointer;
+
+  &.hasError {
+    border-color: $color-error;
+
+    &:focus {
+      border-color: $color-error;
+      box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+    }
+  }
+}
+
+.chevron {
+  position: absolute;
+  right: $space-3;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $gray-400;
+  pointer-events: none;
+  display: flex;
+}
+
+.error {
+  font-size: $text-xs;
+  color: $color-error;
+  font-weight: $weight-medium;
+}
+
+.hint {
+  font-size: $text-xs;
+  color: $gray-500;
+}

@@ -1,0 +1,142 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  background: $color-primary;
+  color: rgba($color-white, 0.7);
+  padding: $space-16 0 0;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: $space-10;
+  padding-bottom: $space-12;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-8;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+// Brand
+.brand {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 36px;
+  width: auto;
+}
+
+.tagline {
+  font-size: $text-sm;
+  line-height: $leading-relaxed;
+  max-width: 280px;
+}
+
+.social {
+  display: flex;
+  gap: $space-3;
+}
+
+.socialLink {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba($color-white, 0.1);
+  color: rgba($color-white, 0.7);
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-accent;
+    color: $color-white;
+  }
+}
+
+// Columns
+.column {
+  @include flex-col;
+  gap: $space-3;
+}
+
+.columnTitle {
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  color: $color-white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: $space-1;
+}
+
+.link {
+  font-size: $text-sm;
+  color: rgba($color-white, 0.6);
+  transition: color $transition-fast;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: rgba($color-white, 0.6);
+  transition: color $transition-fast;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// Bottom
+.bottom {
+  @include flex-between;
+  padding: $space-6 0;
+  border-top: 1px solid rgba($color-white, 0.1);
+  font-size: $text-xs;
+  color: rgba($color-white, 0.4);
+
+  @include mobile {
+    flex-direction: column;
+    gap: $space-3;
+    text-align: center;
+  }
+}
+
+.legal {
+  display: flex;
+  gap: $space-6;
+
+  a {
+    color: rgba($color-white, 0.4);
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: rgba($color-white, 0.8);
+    }
+  }
+}

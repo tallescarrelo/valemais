@@ -1,0 +1,137 @@
+@use 'sass:color';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.button {
+  @include button-base;
+  border-radius: $radius-full;
+  font-size: $text-sm;
+  line-height: 1;
+
+  // Sizes
+  &.sm {
+    padding: $space-2 $space-4;
+    font-size: $text-xs;
+    gap: $space-1;
+  }
+
+  &.md {
+    padding: $space-3 $space-6;
+    font-size: $text-sm;
+  }
+
+  &.lg {
+    padding: $space-4 $space-8;
+    font-size: $text-base;
+  }
+
+  // Variants
+  &.primary {
+    background: $color-accent;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background: $color-accent-dark;
+    }
+
+    &:active:not(:disabled) {
+      background: color.adjust($color-accent-dark, $lightness: -5%);
+    }
+
+    @include focus-ring($color-accent);
+  }
+
+  &.secondary {
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background: $color-primary-light;
+    }
+
+    &:active:not(:disabled) {
+      background: $color-primary-dark;
+    }
+
+    @include focus-ring($color-primary);
+  }
+
+  &.outline {
+    background: transparent;
+    color: $color-accent;
+    border: 1.5px solid $color-accent;
+
+    &:hover:not(:disabled) {
+      background: $color-accent-bg;
+    }
+
+    &:active:not(:disabled) {
+      background: color.adjust($color-accent-bg, $lightness: -3%);
+    }
+
+    @include focus-ring($color-accent);
+  }
+
+  &.ghost {
+    background: transparent;
+    color: $gray-700;
+
+    &:hover:not(:disabled) {
+      background: $gray-100;
+      color: $gray-900;
+    }
+
+    &:active:not(:disabled) {
+      background: $gray-200;
+    }
+
+    @include focus-ring($color-accent);
+  }
+
+  &.danger {
+    background: $color-error;
+    color: $color-white;
+
+    &:hover:not(:disabled) {
+      background: color.adjust($color-error, $lightness: -8%);
+    }
+
+    &:active:not(:disabled) {
+      background: color.adjust($color-error, $lightness: -12%);
+    }
+
+    @include focus-ring($color-error);
+  }
+
+  // States
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.loading {
+    position: relative;
+    color: transparent !important;
+
+    .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// Spinner
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: $color-white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}

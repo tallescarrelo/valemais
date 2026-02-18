@@ -1,0 +1,296 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ===================== ENUMS =====================
+
+enum Role {
+  CLIENT
+  PARTNER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+enum PartnerCategory {
+  FOOD
+  HEALTH
+  BEAUTY
+  SERVICES
+  EDUCATION
+  ENTERTAINMENT
+  FASHION
+  AUTOMOTIVE
+  TECHNOLOGY
+  OTHER
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+}
+
+enum PartnerStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+enum SubscriptionType {
+  ONE_TIME
+  RECURRING
+}
+
+enum SubscriptionStatus {
+  PENDING
+  ACTIVE
+  EXPIRED
+  CANCELLED
+  SUSPENDED
+}
+
+enum PaymentStatus {
+  PENDING
+  CONFIRMED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  PIX
+  BOLETO
+}
+
+enum ValidationStatus {
+  VALID
+  INVALID
+}
+
+// ===================== MODELS =====================
+
+model User {
+  id        String     @id @default(cuid())
+  name      String
+  email     String     @unique
+  cpf       String     @unique
+  phone     String
+  password  String
+  birthDate DateTime?
+  role      Role       @default(CLIENT)
+  status    UserStatus @default(ACTIVE)
+  cardCode  String     @unique
+
+  // Endereco (opcional)
+  zipCode      String?
+  street       String?
+  number       String?
+  complement   String?
+  neighborhood String?
+  city         String?
+  state        String?
+
+  // Tokens
+  refreshToken      String?
+  resetPasswordToken String?
+  resetPasswordExpires DateTime?
+
+  // Relacionamentos
+  subscriptions Subscription[]
+  payments      Payment[]
+  validations   Validation[]
+
+  // Metadata
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  lastLoginAt DateTime?
+
+  @@index([cardCode])
+  @@index([email])
+  @@map("users")
+}
+
+model Partner {
+  id          String          @id @default(cuid())
+  companyName String
+  tradeName   String
+  cnpj        String          @unique
+  email       String          @unique
+  phone       String
+
+  // Endereco
+  zipCode      String
+  street       String
+  number       String
+  complement   String?
+  neighborhood String
+  city         String
+  state        String
+
+  // Dados do parceiro
+  category            PartnerCategory
+  discountType        DiscountType    @default(PERCENTAGE)
+  discountValue       Decimal
+  discountDescription String
+
+  // Media
+  logoUrl String?
+
+  // Configuracoes
+  partnerCode String        @unique
+  qrCodeUrl   String?
+  status      PartnerStatus @default(PENDING)
+
+  // Opcional
+  website      String?
+  instagram    String?
+  openingHours String?
+
+  // Relacionamentos
+  users       PartnerUser[]
+  validations Validation[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([partnerCode])
+  @@map("partners")
+}
+
+model PartnerUser {
+  id           String  @id @default(cuid())
+  name         String
+  email        String  @unique
+  password     String
+  refreshToken String?
+  partnerId    String
+  partner      Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("partner_users")
+}
+
+model Plan {
+  id             String  @id @default(cuid())
+  name           String
+  description    String
+  price          Int     // Valor em centavos (ex: 1990 = R$ 19,90)
+  intervalMonths Int     @default(1)
+  benefits       String[]
+  isActive       Boolean @default(true)
+
+  // Relacionamentos
+  subscriptions Subscription[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("plans")
+}
+
+model Subscription {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planId String
+  plan   Plan   @relation(fields: [planId], references: [id])
+
+  type   SubscriptionType
+  status SubscriptionStatus @default(PENDING)
+
+  startDate       DateTime
+  endDate         DateTime
+  nextBillingDate DateTime?
+  cancelledAt     DateTime?
+
+  // Gateway
+  externalId String?
+
+  // Relacionamentos
+  payments Payment[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, status])
+  @@map("subscriptions")
+}
+
+model Payment {
+  id             String       @id @default(cuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionId String
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  amount Int // Valor em centavos
+  status PaymentStatus  @default(PENDING)
+  method PaymentMethod?
+
+  // Gateway
+  externalId      String?
+  gatewayResponse Json?
+
+  paidAt DateTime?
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, createdAt])
+  @@map("payments")
+}
+
+model Validation {
+  id        String @id @default(cuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  partnerId String
+  partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  status ValidationStatus
+  code   String           @unique
+  reason String?
+
+  validatedAt DateTime @default(now())
+
+  // Auditoria
+  ipAddress String?
+  userAgent String?
+
+  // Metadata
+  createdAt DateTime @default(now())
+
+  @@index([validatedAt])
+  @@index([userId, validatedAt])
+  @@index([partnerId, validatedAt])
+  @@map("validations")
+}
+
+model AdminConfig {
+  id          String  @id @default(cuid())
+  key         String  @unique
+  value       String
+  description String?
+
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_configs")
+}

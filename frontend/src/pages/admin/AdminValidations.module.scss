@@ -1,0 +1,134 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Table
+.tableWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: $font-body;
+
+  th {
+    @include label;
+    color: $gray-400;
+    font-size: $text-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    padding: $space-3 $space-4;
+    border-bottom: 1px solid $gray-200;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: $space-3 $space-4;
+    font-size: $text-sm;
+    color: $gray-700;
+    border-bottom: 1px solid $gray-100;
+    white-space: nowrap;
+  }
+}
+
+.tableRow {
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $gray-50;
+  }
+}
+
+.cellDate {
+  @include flex-col;
+  gap: 2px;
+}
+
+.dateMain {
+  font-weight: $weight-medium;
+  color: $gray-800;
+  font-size: $text-sm;
+}
+
+.dateTime {
+  font-size: $text-xs;
+  color: $gray-400;
+}
+
+.cellName {
+  font-weight: $weight-medium;
+  color: $gray-900;
+}
+
+.hideOnMobile {
+  @include mobile {
+    display: none;
+  }
+}
+
+.discount {
+  font-family: $font-display;
+  font-weight: $weight-semibold;
+  color: $color-accent;
+}
+
+// Pagination
+.pagination {
+  @include flex-between;
+  padding: $space-4;
+  border-top: 1px solid $gray-100;
+}
+
+.pageBtn {
+  @include button-base;
+  font-size: $text-sm;
+  color: $gray-600;
+  background: none;
+  padding: $space-2 $space-3;
+  border-radius: $radius-md;
+  gap: $space-1;
+
+  &:hover:not(:disabled) {
+    background: $gray-100;
+    color: $gray-800;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.pageInfo {
+  font-size: $text-sm;
+  color: $gray-500;
+}

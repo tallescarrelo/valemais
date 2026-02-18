@@ -1,0 +1,250 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Main Card
+.mainCard {
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// Search Section
+.searchSection {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-6 0;
+
+  @include mobile {
+    padding: $space-4 0;
+  }
+}
+
+.searchIcon {
+  @include flex-center;
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-xl;
+  background: $color-accent-bg;
+  color: $color-accent;
+  margin-bottom: $space-5;
+}
+
+.searchTitle {
+  @include heading($text-xl, $weight-bold);
+  margin-bottom: $space-2;
+}
+
+.searchDescription {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-bottom: $space-6;
+  max-width: 340px;
+}
+
+.searchForm {
+  @include flex-col;
+  gap: $space-4;
+  width: 100%;
+}
+
+// Confirm Section
+.confirmSection {
+  @include flex-col;
+  gap: $space-5;
+  padding: $space-4 0;
+}
+
+.partnerPreview {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.partnerAvatar {
+  @include flex-center;
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-lg;
+  background: $color-accent-bg;
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+.partnerInfo {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.partnerName {
+  @include heading($text-lg, $weight-bold);
+}
+
+.partnerAddress {
+  @include body($text-sm);
+  color: $gray-500;
+}
+
+.discountPreview {
+  @include flex-center;
+  gap: $space-2;
+  padding: $space-4;
+  background: $color-accent-bg;
+  border-radius: $radius-lg;
+  border: 1px dashed rgba($color-accent, 0.3);
+}
+
+.discountValue {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $color-accent;
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-3;
+  padding-top: $space-4;
+  border-top: 1px solid $gray-100;
+
+  @include mobile {
+    flex-direction: column-reverse;
+  }
+}
+
+// Result Section (Success & Error)
+.resultSection {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-6 0;
+
+  @include mobile {
+    padding: $space-4 0;
+  }
+}
+
+.successIcon {
+  @include flex-center;
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-full;
+  background: $color-success-bg;
+  color: $color-success;
+  margin-bottom: $space-5;
+}
+
+.errorIcon {
+  @include flex-center;
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-full;
+  background: $color-error-bg;
+  color: $color-error;
+  margin-bottom: $space-5;
+}
+
+.resultTitle {
+  @include heading($text-xl, $weight-bold);
+  margin-bottom: $space-2;
+}
+
+.resultDescription {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-bottom: $space-5;
+  max-width: 340px;
+}
+
+.resultDetails {
+  width: 100%;
+  @include flex-col;
+  gap: $space-1;
+  padding: $space-4;
+  background: $gray-50;
+  border-radius: $radius-lg;
+  margin-bottom: $space-5;
+}
+
+.resultItem {
+  @include flex-between;
+  padding: $space-2 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-200;
+  }
+}
+
+.resultLabel {
+  @include label;
+  color: $gray-500;
+}
+
+.resultValue {
+  font-weight: $weight-semibold;
+  font-size: $text-sm;
+  color: $gray-800;
+}
+
+.resultDiscount {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $weight-bold;
+  color: $color-accent;
+}
+
+.resultActions {
+  margin-top: $space-2;
+}
+
+// Help Card
+.helpCard {
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+  background: $gray-50;
+}
+
+.helpTitle {
+  @include heading($text-sm, $weight-semibold);
+  margin-bottom: $space-4;
+}
+
+.helpSteps {
+  margin: 0;
+  padding-left: $space-5;
+  @include flex-col;
+  gap: $space-3;
+
+  li {
+    @include body($text-sm);
+    color: $gray-600;
+    line-height: $leading-relaxed;
+
+    strong {
+      color: $gray-800;
+      font-weight: $weight-semibold;
+    }
+  }
+}

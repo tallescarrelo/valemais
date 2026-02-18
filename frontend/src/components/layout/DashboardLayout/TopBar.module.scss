@@ -1,0 +1,110 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.topBar {
+  @include flex-between;
+  height: $header-height;
+  padding: 0 $space-6;
+  background: $color-white;
+  border-bottom: 1px solid $gray-200;
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+
+  @include mobile {
+    padding: 0 $space-4;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.menuBtn {
+  display: none;
+  color: $gray-600;
+  padding: $space-2;
+  border-radius: $radius-md;
+
+  &:hover {
+    background: $gray-100;
+    color: $color-primary;
+  }
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $weight-bold;
+  color: $gray-900;
+
+  @include mobile {
+    font-size: $text-base;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.iconBtn {
+  position: relative;
+  color: $gray-500;
+  padding: $space-2;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+    background: $gray-100;
+  }
+}
+
+.notifBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: $weight-bold;
+  line-height: 16px;
+  text-align: center;
+  color: $color-white;
+  background: $color-error;
+  border-radius: $radius-full;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2 $space-3;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $gray-100;
+  }
+}
+
+.userName {
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $gray-700;
+
+  @include mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,154 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Alerts
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $color-success-bg;
+  border: 1px solid rgba($color-success, 0.2);
+  border-radius: $radius-md;
+  color: $color-accent-dark;
+  font-size: $text-sm;
+  margin-bottom: $space-4;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $color-error-bg;
+  border: 1px solid rgba($color-error, 0.2);
+  border-radius: $radius-md;
+  color: $color-error;
+  font-size: $text-sm;
+  margin-bottom: $space-4;
+}
+
+.dismissBtn {
+  @include flex-center;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $gray-500;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+// Section
+.section {
+  margin-bottom: 0;
+}
+
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-5;
+  padding-bottom: $space-3;
+  border-bottom: 1px solid $gray-100;
+}
+
+.sectionIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $gray-100;
+  color: $gray-600;
+  flex-shrink: 0;
+}
+
+.sectionIconAccent {
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+.sectionTitle {
+  @include heading($text-lg, $weight-semibold);
+}
+
+// Form
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-5;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.formRow {
+  display: flex;
+  gap: $space-4;
+  grid-column: 1 / -1;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $space-4;
+  }
+}
+
+.streetInput {
+  flex: 3;
+}
+
+.numberInput {
+  flex: 1;
+  min-width: 100px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $space-2;
+
+  @include mobile {
+    justify-content: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+}

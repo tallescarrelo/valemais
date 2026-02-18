@@ -1,0 +1,161 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  background: $gray-100;
+  @include flex-center;
+  padding: $space-6;
+
+  @include mobile {
+    padding: $space-4;
+    align-items: flex-start;
+    padding-top: $space-8;
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  padding: $space-10;
+
+  @include mobile {
+    padding: $space-6;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+  }
+}
+
+// ===================== LOGO =====================
+.logo {
+  text-align: center;
+  margin-bottom: $space-2;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+}
+
+// ===================== HEADER =====================
+.header {
+  text-align: center;
+  margin-bottom: $space-8;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  margin-top: $space-1;
+}
+
+// ===================== FORM =====================
+.form {
+  @include flex-col;
+  gap: $space-5;
+}
+
+// ===================== TWO COLUMNS =====================
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-5;
+  }
+}
+
+// ===================== ERROR ALERT =====================
+.errorAlert {
+  padding: $space-3 $space-4;
+  background: $color-error;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  border-radius: $radius-md;
+  line-height: $leading-normal;
+}
+
+// ===================== TERMS CHECKBOX =====================
+.termsRow {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: $color-accent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.termsLabel {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $gray-600;
+  line-height: $leading-normal;
+  cursor: pointer;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    font-weight: $weight-semibold;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent-dark;
+      text-decoration: underline;
+    }
+  }
+}
+
+.termsError {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $color-error;
+  margin-top: -$space-2;
+}
+
+// ===================== SUBMIT =====================
+.submitRow {
+  margin-top: $space-2;
+}
+
+// ===================== FOOTER LINKS =====================
+.footer {
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+  margin-top: $space-8;
+  padding-top: $space-6;
+  border-top: 1px solid $gray-200;
+}
+
+.footerText {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $gray-500;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+    font-weight: $weight-semibold;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent-dark;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,214 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// KPI Grid
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-5;
+
+  @include tablet-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+}
+
+.kpiCard {
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+.kpiTop {
+  @include flex-between;
+  margin-bottom: $space-4;
+}
+
+.kpiIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+
+  &--primary {
+    background: rgba($color-primary, 0.08);
+    color: $color-primary;
+  }
+
+  &--accent {
+    background: $color-accent-bg;
+    color: $color-accent;
+  }
+
+  &--info {
+    background: $color-info-bg;
+    color: $color-info;
+  }
+
+  &--warning {
+    background: $color-warning-bg;
+    color: $color-warning;
+  }
+}
+
+.kpiTrend {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  color: $color-accent;
+  background: $color-accent-bg;
+  padding: $space-1 $space-2;
+  border-radius: $radius-full;
+}
+
+.kpiValue {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-xl;
+  }
+}
+
+.kpiLabel {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Lists Grid
+.listsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.listCard {
+  min-height: 200px;
+}
+
+.listHeader {
+  @include flex-between;
+  margin-bottom: $space-4;
+}
+
+.listTitleRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.listIcon {
+  color: $color-accent;
+}
+
+.listTitle {
+  @include heading($text-base, $weight-semibold);
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $color-accent;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.emptyText {
+  @include body($text-sm);
+  color: $gray-400;
+  text-align: center;
+  padding: $space-8 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  @include flex-between;
+  padding: $space-3 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-100;
+  }
+}
+
+.listItemInfo {
+  @include flex-col;
+  gap: $space-1;
+  min-width: 0;
+  flex: 1;
+}
+
+.listItemName {
+  font-weight: $weight-medium;
+  font-size: $text-sm;
+  color: $gray-800;
+  @include truncate;
+}
+
+.listItemSub {
+  font-size: $text-xs;
+  color: $gray-400;
+  @include truncate;
+}
+
+.paymentAmount {
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  color: $color-accent;
+  white-space: nowrap;
+  margin-left: $space-3;
+}

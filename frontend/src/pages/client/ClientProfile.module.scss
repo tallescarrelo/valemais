@@ -1,0 +1,115 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Section Title
+.sectionTitle {
+  @include heading($text-lg, $weight-semibold);
+  margin-bottom: $space-5;
+  padding-bottom: $space-3;
+  border-bottom: 1px solid $gray-100;
+}
+
+// Alerts
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $color-success-bg;
+  border: 1px solid rgba($color-success, 0.2);
+  border-radius: $radius-md;
+  color: $color-accent-dark;
+  font-size: $text-sm;
+  margin-bottom: $space-5;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $color-error-bg;
+  border: 1px solid rgba($color-error, 0.2);
+  border-radius: $radius-md;
+  color: $color-error;
+  font-size: $text-sm;
+  margin-bottom: $space-5;
+}
+
+.dismissBtn {
+  @include flex-center;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $gray-500;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+// Form
+.form {
+  @include flex-col;
+  gap: $space-6;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-5;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: $space-4;
+  border-top: 1px solid $gray-100;
+
+  @include mobile {
+    justify-content: stretch;
+
+    button {
+      width: 100%;
+    }
+  }
+}

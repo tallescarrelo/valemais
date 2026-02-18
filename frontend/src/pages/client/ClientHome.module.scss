@@ -1,0 +1,314 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  margin-bottom: $space-2;
+}
+
+.greeting {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Grid layout
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+// Virtual Card Preview
+.cardPreview {
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover .virtualCard {
+    transform: scale(1.01);
+  }
+}
+
+.virtualCard {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 50%, $color-accent-dark 100%);
+  padding: $space-6;
+  color: $color-white;
+  border-radius: $radius-lg $radius-lg 0 0;
+  transition: transform $transition-slow;
+  min-height: 180px;
+  @include flex-col;
+  justify-content: space-between;
+}
+
+.virtualCardHeader {
+  @include flex-between;
+}
+
+.logoText {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+  letter-spacing: 1px;
+}
+
+.logoAccent {
+  color: $color-accent-light;
+}
+
+.cardCode {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  letter-spacing: 3px;
+  margin-top: $space-6;
+}
+
+.cardName {
+  font-size: $text-sm;
+  color: rgba($color-white, 0.8);
+  margin-top: $space-2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardAction {
+  @include flex-between;
+  padding: $space-3 $space-6;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $gray-600;
+  border-top: 1px solid $gray-200;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// Subscription Card
+.subscriptionCard {
+  grid-column: 1 / -1;
+
+  @include tablet-up {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.sectionHeaderRow {
+  @include flex-between;
+  margin-bottom: $space-4;
+}
+
+.sectionIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $color-accent-bg;
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  @include heading($text-base, $weight-semibold);
+}
+
+.planName {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+.subscriptionDetails {
+  display: flex;
+  gap: $space-8;
+  margin-top: $space-5;
+  padding-top: $space-4;
+  border-top: 1px solid $gray-100;
+
+  @include mobile {
+    gap: $space-6;
+  }
+}
+
+.detailItem {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.detailLabel {
+  @include label;
+  color: $gray-400;
+  font-size: $text-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $weight-bold;
+  color: $gray-900;
+}
+
+.detailSuffix {
+  font-size: $text-sm;
+  font-weight: $weight-regular;
+  color: $gray-400;
+}
+
+// Quick Actions
+.quickActions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: $space-4;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.actionBtn {
+  flex: 1;
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-5 $space-4;
+  background: $color-white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $gray-700;
+
+  &:hover {
+    border-color: $color-accent;
+    box-shadow: $shadow-md;
+    color: $color-accent;
+
+    .actionIcon {
+      background: $color-accent-bg;
+      color: $color-accent;
+    }
+  }
+}
+
+.actionIcon {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: $gray-100;
+  color: $gray-600;
+  transition: all $transition-fast;
+}
+
+.actionIconAccent {
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+// Validations Card
+.validationsCard {
+  grid-column: 1 / -1;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $color-accent;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.emptyValidations {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-8 $space-4;
+  color: $gray-400;
+
+  p {
+    margin-top: $space-3;
+    font-weight: $weight-medium;
+    color: $gray-600;
+    font-size: $text-base;
+  }
+
+  span {
+    font-size: $text-sm;
+    color: $gray-400;
+    margin-top: $space-1;
+  }
+}
+
+.validationsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.validationItem {
+  @include flex-between;
+  padding: $space-3 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-100;
+  }
+}
+
+.validationInfo {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.validationPartner {
+  font-weight: $weight-medium;
+  font-size: $text-sm;
+  color: $gray-800;
+}
+
+.validationDate {
+  font-size: $text-xs;
+  color: $gray-400;
+}

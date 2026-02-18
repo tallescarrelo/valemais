@@ -1,0 +1,1230 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.home {
+  overflow-x: hidden;
+}
+
+.container {
+  @include container;
+}
+
+// ===================== HERO =====================
+.hero {
+  position: relative;
+  padding: $space-24 0 $space-20;
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-12;
+    align-items: center;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $space-8;
+      text-align: center;
+    }
+  }
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d2b0d 0%, #162b16 30%, #1a3320 60%, #0f1f12 100%);
+}
+
+.heroBgPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba($color-accent, 0.12) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+.heroContent {
+  @include flex-col;
+  gap: $space-5;
+}
+
+.heroTitle {
+  font-family: $font-display;
+  font-size: 3.5rem;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+
+  @include tablet {
+    font-size: $text-5xl;
+  }
+
+  @include mobile {
+    font-size: $text-4xl;
+  }
+}
+
+.highlight {
+  color: $color-accent-light;
+  position: relative;
+}
+
+.highlightLight {
+  color: $color-accent-light;
+}
+
+.heroSubtitle {
+  font-size: $text-lg;
+  color: rgba($color-white, 0.7);
+  max-width: 500px;
+  line-height: $leading-relaxed;
+
+  @include mobile {
+    margin: 0 auto;
+    font-size: $text-base;
+  }
+}
+
+.heroCtas {
+  display: flex;
+  gap: $space-4;
+  padding-top: $space-2;
+
+  // Outline button on dark bg
+  a:last-child button,
+  > a:last-child button {
+    color: $color-white;
+    border-color: rgba($color-white, 0.3);
+
+    &:hover {
+      background: rgba($color-white, 0.1);
+      border-color: $color-white;
+    }
+  }
+
+  @include mobile {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.heroProof {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding-top: $space-4;
+
+  p {
+    font-size: $text-sm;
+    color: rgba($color-white, 0.6);
+
+    strong {
+      color: $color-white;
+    }
+  }
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.heroAvatars {
+  display: flex;
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    border: 2px solid $color-white;
+    object-fit: cover;
+    margin-left: -10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+// Hero card visual
+.heroVisual {
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    order: -1;
+  }
+}
+
+.cardStack {
+  position: relative;
+  width: 400px;
+  height: 280px;
+
+  @include mobile {
+    width: 320px;
+    height: 240px;
+  }
+}
+
+.cardMock {
+  width: 380px;
+  height: 230px;
+  padding: $space-6;
+  border-radius: $radius-xl;
+  background: linear-gradient(145deg, $color-primary 0%, #1a1a1a 60%, #1e3a1d 100%);
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-3deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: rotate(-1deg) translateY(-5px);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -30%;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-accent, 0.12) 0%, transparent 70%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-accent, 0.06) 0%, transparent 70%);
+  }
+
+  @include mobile {
+    width: 310px;
+    height: 190px;
+    padding: $space-5;
+    transform: rotate(0);
+  }
+}
+
+.cardChip {
+  position: absolute;
+  top: $space-6;
+  right: $space-6;
+  width: 44px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: linear-gradient(135deg, #d4af37 0%, #f7dc6f 50%, #d4af37 100%);
+  opacity: 0.8;
+  z-index: 1;
+
+  @include mobile {
+    width: 36px;
+    height: 26px;
+    top: $space-5;
+    right: $space-5;
+  }
+}
+
+.mockTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.mockLogo {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-extrabold;
+  letter-spacing: 0.05em;
+
+  span {
+    color: $color-accent;
+  }
+}
+
+.mockBadge {
+  font-size: 10px;
+  font-weight: $weight-bold;
+  background: $color-accent;
+  padding: 3px $space-3;
+  border-radius: $radius-full;
+  letter-spacing: 0.08em;
+}
+
+.mockCode {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  letter-spacing: 0.2em;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  @include mobile {
+    font-size: $text-lg;
+  }
+}
+
+.mockBottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: $text-sm;
+  color: rgba($color-white, 0.6);
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: $weight-medium;
+}
+
+// Floating badges
+.floatingDiscount,
+.floatingValidation {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  box-shadow: $shadow-lg;
+  z-index: 3;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floatingDiscount {
+  top: 10px;
+  right: -20px;
+  background: $color-white;
+  color: $color-accent;
+  animation-delay: 0s;
+
+  @include mobile {
+    right: -5px;
+    top: 5px;
+  }
+}
+
+.floatingValidation {
+  bottom: 20px;
+  left: -15px;
+  background: $color-accent;
+  color: $color-white;
+  animation-delay: 1.5s;
+
+  @include mobile {
+    left: -5px;
+    bottom: 10px;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+// ===================== STATS BAR =====================
+.statsBar {
+  background: linear-gradient(90deg, $color-accent-dark 0%, $color-accent 50%, $color-accent-dark 100%);
+  padding: $space-8 0;
+  position: relative;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-6;
+  text-align: center;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-4;
+  }
+}
+
+.statItem {
+  @include flex-col;
+  gap: $space-1;
+}
+
+.statValue {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+
+  @include mobile {
+    font-size: $text-2xl;
+  }
+}
+
+.statLabel {
+  font-size: $text-sm;
+  color: rgba($color-white, 0.6);
+  font-weight: $weight-medium;
+}
+
+// ===================== SECTIONS =====================
+.section {
+  padding: $space-24 0;
+  position: relative;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.sectionAlt {
+  padding: $space-24 0;
+  background: linear-gradient(180deg, #f0fdf0 0%, $gray-50 40%, #f0fdf0 100%);
+  position: relative;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: $space-12;
+
+  @include mobile {
+    margin-bottom: $space-8;
+  }
+}
+
+.sectionTitle {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: $weight-extrabold;
+  color: $gray-900;
+  margin: $space-4 0 $space-3;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-3xl;
+  }
+}
+
+.sectionTitleLight {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+  margin: $space-4 0 $space-3;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-3xl;
+  }
+}
+
+.sectionSubtitle {
+  font-size: $text-lg;
+  color: $gray-500;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: $leading-relaxed;
+
+  @include mobile {
+    font-size: $text-base;
+  }
+}
+
+.sectionSubtitleLight {
+  font-size: $text-lg;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: $leading-relaxed;
+}
+
+// ===================== CATEGORIES =====================
+.categoriesSection {
+  padding: $space-24 0;
+  background:
+    url('https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&q=30') center / cover no-repeat fixed;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba($color-white, 0.95);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include mobile {
+    padding: $space-16 0;
+    background-attachment: scroll;
+  }
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.categoryCard {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $color-white;
+  box-shadow: $shadow-card;
+  transition: transform $transition-slow, box-shadow $transition-slow;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-xl;
+
+    .categoryImage img {
+      transform: scale(1.08);
+    }
+  }
+}
+
+.categoryImage {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @include mobile {
+    height: 180px;
+  }
+}
+
+.categoryOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.categoryDiscount {
+  position: absolute;
+  bottom: $space-3;
+  right: $space-3;
+  background: $color-accent;
+  color: $color-white;
+  padding: $space-1 $space-3;
+  border-radius: $radius-md;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.03em;
+}
+
+.categoryContent {
+  padding: $space-5;
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    color: $gray-900;
+    margin-bottom: $space-1;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: $gray-500;
+    line-height: $leading-relaxed;
+  }
+}
+
+.categoryIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-lg;
+  background: $color-accent-bg;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+// ===================== STEPS =====================
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-8;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+.stepCard {
+  text-align: center;
+  position: relative;
+}
+
+.stepIconWrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: $space-5;
+}
+
+.stepIcon {
+  @include flex-center;
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-full;
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+  color: $color-white;
+  box-shadow: 0 8px 25px rgba($color-accent, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.stepLine {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 44px);
+  width: calc(100% - 16px);
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    $gray-300 0,
+    $gray-300 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  transform: translateY(-50%);
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.stepNumber {
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  color: $color-accent;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stepTitle {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  margin: $space-2 0;
+}
+
+.stepDesc {
+  font-size: $text-sm;
+  color: $gray-500;
+  line-height: $leading-relaxed;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+// ===================== BENEFITS =====================
+.benefitsSection {
+  padding: $space-24 0;
+  background: linear-gradient(180deg, $color-white 0%, #f0fdf0 30%, #e6f7e5 70%, $color-white 100%);
+  position: relative;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.benefitsLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-16;
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.benefitsLeft {
+  @include flex-col;
+  gap: $space-4;
+  position: sticky;
+  top: $space-8;
+
+  @include mobile {
+    position: static;
+  }
+}
+
+.benefitsDesc {
+  font-size: $text-lg;
+  color: $gray-500;
+  line-height: $leading-relaxed;
+}
+
+.benefitsImage {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  margin-top: $space-4;
+
+  img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.benefitsRight {
+  @include flex-col;
+  gap: $space-5;
+}
+
+.benefitItem {
+  display: flex;
+  gap: $space-4;
+  padding: $space-5;
+  border-radius: $radius-lg;
+  background: $color-white;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-slow, transform $transition-slow;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateX(4px);
+  }
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-base;
+    font-weight: $weight-bold;
+    color: $gray-900;
+    margin-bottom: $space-1;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: $gray-500;
+    line-height: $leading-relaxed;
+  }
+}
+
+.benefitIcon {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: $radius-lg;
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+// ===================== PLAN =====================
+.planSection {
+  padding: $space-24 0;
+  background: linear-gradient(160deg, $color-primary 0%, #1a1a1a 50%, #1e3a1d 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-accent, 0.08) 0%, transparent 70%);
+  }
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.planCard {
+  max-width: 480px;
+  margin: 0 auto;
+  background: $color-white;
+  border-radius: $radius-2xl;
+  padding: $space-8;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+
+  @include mobile {
+    padding: $space-6;
+  }
+}
+
+.planPopular {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-accent;
+  color: $color-white;
+  padding: $space-1 $space-5;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.1em;
+}
+
+.planHeader {
+  text-align: center;
+  margin-bottom: $space-6;
+}
+
+.planName {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $weight-bold;
+  color: $gray-900;
+}
+
+.planPrice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  margin: $space-4 0;
+}
+
+.planCurrency {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  margin-top: 8px;
+}
+
+.planValue {
+  font-family: $font-display;
+  font-size: 4.5rem;
+  font-weight: $weight-extrabold;
+  color: $gray-900;
+  line-height: 1;
+}
+
+.planCents {
+  @include flex-col;
+  margin-top: 8px;
+
+  span:first-child {
+    font-family: $font-display;
+    font-size: $text-2xl;
+    font-weight: $weight-bold;
+    color: $gray-900;
+    line-height: 1;
+  }
+
+  span:last-child {
+    font-size: $text-sm;
+    color: $gray-500;
+    font-weight: $weight-medium;
+  }
+}
+
+.planSave {
+  font-size: $text-sm;
+  color: $gray-500;
+  background: $color-accent-bg;
+  padding: $space-2 $space-4;
+  border-radius: $radius-md;
+  display: inline-block;
+
+  strong {
+    color: $color-accent;
+  }
+}
+
+.planDivider {
+  height: 1px;
+  background: $gray-200;
+  margin-bottom: $space-6;
+}
+
+.planFeatures {
+  @include flex-col;
+  gap: $space-3;
+  margin-bottom: $space-6;
+}
+
+.planFeature {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $text-sm;
+  color: $gray-700;
+
+  svg {
+    color: $color-accent;
+    min-width: 18px;
+  }
+}
+
+.planCta {
+  display: block;
+  text-decoration: none;
+}
+
+.planNote {
+  text-align: center;
+  font-size: $text-xs;
+  color: $gray-400;
+  margin-top: $space-3;
+}
+
+// ===================== TESTIMONIALS =====================
+.testimonialSection {
+  padding: $space-24 0;
+  background:
+    linear-gradient(135deg, rgba($color-primary, 0.03) 0%, transparent 50%),
+    linear-gradient(225deg, rgba($color-accent, 0.05) 0%, transparent 50%),
+    $gray-50;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonialCard {
+  background: $color-white;
+  border-radius: $radius-xl;
+  padding: $space-6;
+  box-shadow: $shadow-card;
+  transition: transform $transition-slow, box-shadow $transition-slow;
+  border: 1px solid $gray-100;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.testimonialStars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: $space-4;
+}
+
+.testimonialText {
+  font-size: $text-sm;
+  color: $gray-700;
+  line-height: $leading-relaxed;
+  margin-bottom: $space-5;
+  font-style: italic;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  img {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    object-fit: cover;
+  }
+
+  strong {
+    display: block;
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $gray-900;
+  }
+
+  span {
+    font-size: $text-xs;
+    color: $gray-400;
+  }
+}
+
+// ===================== FAQ =====================
+.faqSection {
+  padding: $space-24 0;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba($color-primary, 0.03) 50%, transparent 100%),
+    $gray-50;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.faqList {
+  max-width: 700px;
+  margin: 0 auto;
+  @include flex-col;
+  gap: $space-3;
+}
+
+.faqItem {
+  background: $color-white;
+  border-radius: $radius-lg;
+  border: 1px solid $gray-200;
+  overflow: hidden;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &.faqOpen {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+  }
+}
+
+.faqQuestion {
+  @include flex-between;
+  width: 100%;
+  padding: $space-5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: $weight-semibold;
+  color: $gray-900;
+  text-align: left;
+
+  svg {
+    color: $gray-400;
+    min-width: 20px;
+  }
+}
+
+.faqAnswer {
+  padding: 0 $space-5 $space-5;
+
+  p {
+    font-size: $text-sm;
+    color: $gray-600;
+    line-height: $leading-relaxed;
+  }
+}
+
+// ===================== PARTNER CTA =====================
+.partnerCta {
+  padding: $space-24 0;
+  background: linear-gradient(160deg, #0f1c0f 0%, #1a2e1a 40%, #162916 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-accent, 0.1) 0%, transparent 70%);
+  }
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.partnerCtaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.partnerCtaContent {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.partnerCtaTitle {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-2xl;
+  }
+}
+
+.partnerCtaDesc {
+  font-size: $text-base;
+  color: rgba($color-white, 0.7);
+  line-height: $leading-relaxed;
+}
+
+.partnerCtaList {
+  list-style: none;
+  padding: 0;
+  @include flex-col;
+  gap: $space-3;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-size: $text-sm;
+    color: rgba($color-white, 0.85);
+    font-weight: $weight-medium;
+
+    svg {
+      color: $color-accent-light;
+      min-width: 18px;
+    }
+  }
+}
+
+.partnerCtaImage {
+  border-radius: $radius-2xl;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @include mobile {
+    img {
+      height: 280px;
+    }
+  }
+}
+
+// ===================== FINAL CTA =====================
+.finalCta {
+  padding: $space-24 0;
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+  text-align: center;
+
+  @include mobile {
+    padding: $space-16 0;
+  }
+}
+
+.finalCtaContent {
+  max-width: 600px;
+  margin: 0 auto;
+
+  h2 {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $weight-extrabold;
+    color: $color-white;
+    margin-bottom: $space-4;
+    line-height: $leading-tight;
+
+    @include mobile {
+      font-size: $text-3xl;
+    }
+  }
+
+  p {
+    font-size: $text-lg;
+    color: rgba($color-white, 0.85);
+    margin-bottom: $space-8;
+    line-height: $leading-relaxed;
+  }
+}
+
+.finalCtaActions {
+  @include flex-col;
+  align-items: center;
+  gap: $space-4;
+
+  // Override button on green bg
+  a:first-child button {
+    background: $color-white;
+    color: $color-accent-dark;
+
+    &:hover {
+      background: rgba($color-white, 0.9);
+    }
+  }
+}
+
+.finalCtaPhone {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  color: rgba($color-white, 0.8);
+  text-decoration: none;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+}

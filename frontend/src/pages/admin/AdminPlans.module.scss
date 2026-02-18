@@ -1,0 +1,194 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loading {
+  @include flex-center;
+  min-height: 400px;
+}
+
+.page {
+  @include flex-col;
+  gap: $space-6;
+}
+
+// Header
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.subtitle {
+  @include body($text-base);
+  color: $gray-500;
+  margin-top: $space-1;
+}
+
+// Plans Grid
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $space-5;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.planCard {
+  transition: box-shadow $transition-slow;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+.planHeader {
+  @include flex-between;
+  margin-bottom: $space-3;
+}
+
+.planName {
+  @include heading($text-lg, $weight-semibold);
+}
+
+.planDescription {
+  @include body($text-sm);
+  color: $gray-500;
+  margin-bottom: $space-4;
+  @include line-clamp(2);
+}
+
+.planPrice {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $color-accent;
+  margin-bottom: $space-4;
+}
+
+.planPeriod {
+  font-size: $text-sm;
+  font-weight: $weight-regular;
+  color: $gray-400;
+}
+
+// Features
+.planFeatures {
+  padding-top: $space-3;
+  border-top: 1px solid $gray-100;
+  margin-bottom: $space-4;
+}
+
+.featuresLabel {
+  @include label;
+  color: $gray-400;
+  font-size: $text-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: $space-2;
+}
+
+.featuresList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featureItem {
+  font-size: $text-sm;
+  color: $gray-600;
+  padding: $space-1 0;
+  padding-left: $space-4;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+    background: $color-accent;
+  }
+}
+
+// Actions
+.planActions {
+  @include flex-between;
+  gap: $space-3;
+  padding-top: $space-3;
+  border-top: 1px solid $gray-100;
+}
+
+.actionBtn {
+  @include button-base;
+  font-size: $text-sm;
+  color: $gray-600;
+  background: none;
+  padding: $space-2 $space-3;
+  border-radius: $radius-md;
+  gap: $space-2;
+
+  &:hover {
+    background: $gray-100;
+    color: $gray-800;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.actionBtnWarning {
+  &:hover {
+    background: $color-warning-bg;
+    color: $color-warning;
+  }
+}
+
+.actionBtnSuccess {
+  &:hover {
+    background: $color-accent-bg;
+    color: $color-accent;
+  }
+}
+
+// Modal Form
+.form {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.formField {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.formLabel {
+  @include label;
+}
+
+.textarea {
+  @include input-base;
+  resize: vertical;
+  min-height: 100px;
+  font-family: $font-body;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-3;
+  padding-top: $space-4;
+  border-top: 1px solid $gray-100;
+}

@@ -1,0 +1,50 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  padding: $space-12 0;
+}
+
+.container {
+  @include container;
+  max-width: $container-narrow;
+}
+
+.title {
+  @include heading($text-3xl);
+  margin-bottom: $space-2;
+}
+
+.updated {
+  @include body($text-sm);
+  color: $gray-400;
+  margin-bottom: $space-8;
+}
+
+.section {
+  margin-bottom: $space-8;
+
+  h2 {
+    @include heading($text-lg, $weight-semibold);
+    margin-bottom: $space-3;
+  }
+
+  p {
+    @include body;
+    margin-bottom: $space-3;
+  }
+
+  ul {
+    @include body;
+    padding-left: $space-6;
+    margin-bottom: $space-3;
+
+    li {
+      margin-bottom: $space-2;
+
+      &::marker {
+        color: $color-accent;
+      }
+    }
+  }
+}

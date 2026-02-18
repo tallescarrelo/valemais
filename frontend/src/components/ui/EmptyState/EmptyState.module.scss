@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.empty {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  padding: $space-12 $space-6;
+  gap: $space-3;
+}
+
+.iconWrapper {
+  @include flex-center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: $gray-100;
+  color: $gray-400;
+  margin-bottom: $space-2;
+}
+
+.title {
+  @include heading($text-lg, $weight-semibold);
+}
+
+.description {
+  @include body($text-sm);
+  color: $gray-500;
+  max-width: 360px;
+}

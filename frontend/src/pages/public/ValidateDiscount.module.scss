@@ -1,0 +1,465 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  @include flex-col;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0fdf0 0%, $gray-50 50%, #f0fdf0 100%);
+  padding: $space-4;
+  gap: $space-4;
+}
+
+// ===================== BRAND MARK =====================
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brandImg {
+  height: 32px;
+  width: auto;
+}
+
+.loading {
+  @include flex-center;
+  min-height: 300px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.center {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  gap: $space-4;
+  padding: $space-4 0;
+}
+
+.iconBox {
+  @include flex-center;
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-full;
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+.iconBoxSuccess {
+  @include flex-center;
+  width: 88px;
+  height: 88px;
+  border-radius: $radius-full;
+  background: $color-success-bg;
+  color: $color-success;
+}
+
+.iconBoxError {
+  @include flex-center;
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-full;
+  background: $color-error-bg;
+  color: $color-error;
+}
+
+.title {
+  @include heading($text-2xl);
+}
+
+.titleError {
+  @include heading($text-2xl);
+  color: $color-error;
+}
+
+.description {
+  @include body;
+  color: $gray-500;
+  max-width: 360px;
+}
+
+.hint {
+  @include body($text-sm);
+  color: $gray-500;
+
+  a {
+    color: $color-accent;
+    font-weight: $weight-semibold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ===================== PARTNER INFO (pre check-in) =====================
+.partnerInfo {
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-6 $space-4;
+  background: $gray-50;
+  border-radius: $radius-lg;
+  width: 100%;
+}
+
+.partnerIcon {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: $color-accent-bg;
+  color: $color-accent;
+}
+
+.partnerName {
+  @include heading($text-xl);
+}
+
+.discountHighlight {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $weight-extrabold;
+  color: $color-accent;
+}
+
+.discountDesc {
+  @include body($text-sm);
+  color: $gray-500;
+}
+
+.address {
+  @include body($text-sm);
+  color: $gray-400;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// ===================== USER PREVIEW (pre check-in) =====================
+.userPreview {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $gray-50;
+  border-radius: $radius-lg;
+  width: 100%;
+}
+
+.userPreviewAvatar {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+  color: $color-white;
+  font-weight: $weight-bold;
+  font-size: $text-base;
+  flex-shrink: 0;
+}
+
+.userPreviewInfo {
+  @include flex-col;
+  align-items: flex-start;
+  gap: 2px;
+
+  strong {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $gray-900;
+  }
+
+  span {
+    font-size: $text-xs;
+    color: $gray-400;
+  }
+}
+
+// ===================== ERROR ACTIONS =====================
+.errorActions {
+  @include flex-col;
+  gap: $space-2;
+  width: 100%;
+}
+
+// ===================== SUCCESS TICKET =====================
+.successTicket {
+  width: 100%;
+  max-width: 400px;
+  background: $color-white;
+  border-radius: $radius-2xl;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Ticket Header ---
+.ticketHeader {
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+  padding: $space-5 $space-6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticketBadge {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  color: $color-white;
+
+  span {
+    font-size: $text-sm;
+    font-weight: $weight-bold;
+    letter-spacing: 0.5px;
+  }
+}
+
+.ticketLogo {
+  display: flex;
+  align-items: center;
+}
+
+.ticketLogoImg {
+  height: 24px;
+  width: auto;
+}
+
+// --- Client info ---
+.ticketClient {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-5 $space-6;
+}
+
+.ticketAvatar {
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-dark 100%);
+  color: $color-white;
+  font-weight: $weight-bold;
+  font-size: $text-xl;
+  flex-shrink: 0;
+}
+
+.ticketClientInfo {
+  @include flex-col;
+  flex: 1;
+  gap: 2px;
+
+  strong {
+    font-size: $text-base;
+    font-weight: $weight-semibold;
+    color: $gray-900;
+  }
+
+  span {
+    font-size: $text-xs;
+    color: $gray-400;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+  }
+}
+
+// --- Divider com recorte ---
+.ticketDivider {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.ticketNotchLeft,
+.ticketNotchRight {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  background: linear-gradient(135deg, #f0fdf0, $gray-50);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ticketNotchLeft {
+  left: -12px;
+}
+
+.ticketNotchRight {
+  right: -12px;
+}
+
+.ticketDash {
+  flex: 1;
+  margin: 0 $space-6;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    $gray-200,
+    $gray-200 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+// --- Body ---
+.ticketBody {
+  padding: $space-4 $space-6;
+  @include flex-col;
+  gap: $space-5;
+}
+
+.ticketPartner {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  svg {
+    color: $color-accent;
+    flex-shrink: 0;
+  }
+
+  div {
+    @include flex-col;
+    gap: 2px;
+  }
+
+  strong {
+    font-size: $text-base;
+    font-weight: $weight-semibold;
+    color: $gray-900;
+  }
+
+  span {
+    font-size: $text-xs;
+    color: $gray-400;
+    text-transform: capitalize;
+  }
+}
+
+.ticketDiscount {
+  @include flex-col;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-4;
+  background: linear-gradient(135deg, rgba($color-accent, 0.08) 0%, rgba($color-accent, 0.04) 100%);
+  border-radius: $radius-lg;
+  border: 1px solid rgba($color-accent, 0.15);
+}
+
+.ticketDiscountValue {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $weight-extrabold;
+  color: $color-accent;
+}
+
+.ticketDiscountDesc {
+  font-size: $text-xs;
+  color: $gray-500;
+  text-align: center;
+}
+
+.ticketDetails {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.ticketDetailRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-xs;
+  color: $gray-400;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  strong {
+    font-family: monospace;
+    color: $gray-600;
+    letter-spacing: 0.5px;
+  }
+}
+
+// --- Footer ---
+.ticketFooter {
+  background: $gray-50;
+  padding: $space-3 $space-6;
+  text-align: center;
+  border-top: 1px solid $gray-100;
+
+  p {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.ticketActions {
+  display: flex;
+  gap: $space-2;
+  padding: $space-4 $space-6;
+  justify-content: center;
+}
+
+// Result info (legacy)
+.resultInfo {
+  width: 100%;
+  @include flex-col;
+  gap: $space-1;
+  background: $gray-50;
+  border-radius: $radius-lg;
+  padding: $space-4;
+}
+
+.resultRow {
+  @include flex-between;
+  padding: $space-3 0;
+  border-bottom: 1px solid $gray-200;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  span {
+    @include body($text-sm);
+    color: $gray-500;
+  }
+
+  strong {
+    @include body($text-sm, $weight-semibold);
+    color: $gray-900;
+  }
+}
+
+.code {
+  font-family: monospace;
+  letter-spacing: 1px;
+}
