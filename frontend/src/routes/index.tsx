@@ -15,6 +15,7 @@ import Terms from '@/pages/public/Terms';
 import Privacy from '@/pages/public/Privacy';
 import ValidateDiscount from '@/pages/public/ValidateDiscount';
 import ComponentShowcase from '@/pages/public/ComponentShowcase';
+import Segments from '@/pages/public/Segments';
 
 // Client pages
 import ClientHome from '@/pages/client/ClientHome';
@@ -57,6 +58,7 @@ export default function AppRoutes() {
         <Route path="/parceiro/cadastro" element={<PartnerRegister />} />
         <Route path="/termos" element={<Terms />} />
         <Route path="/privacidade" element={<Privacy />} />
+        <Route path="/parceiros" element={<Segments />} />
       </Route>
 
       {/* Validacao de desconto (rota especial via QR Code) */}

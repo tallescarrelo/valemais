@@ -1,0 +1,279 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.segments {
+  min-height: 100vh;
+}
+
+.container {
+  @include container;
+}
+
+// ===================== HEADER =====================
+.header {
+  padding: $space-20 0 $space-12;
+  background: linear-gradient(135deg, #0d2b0d 0%, #162b16 30%, #1a3320 60%, #0f1f12 100%);
+  text-align: center;
+
+  @include mobile {
+    padding: $space-16 0 $space-8;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: $weight-extrabold;
+  color: $color-white;
+  margin: $space-4 0 $space-3;
+  line-height: $leading-tight;
+
+  @include mobile {
+    font-size: $text-3xl;
+  }
+}
+
+.highlight {
+  color: $color-accent-light;
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: rgba($color-white, 0.7);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: $leading-relaxed;
+
+  @include mobile {
+    font-size: $text-base;
+  }
+}
+
+// ===================== CONTENT =====================
+.content {
+  padding: $space-12 0 $space-24;
+  background: $gray-50;
+
+  @include mobile {
+    padding: $space-8 0 $space-16;
+  }
+}
+
+// ===================== CATEGORY TABS =====================
+.categoryTabs {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+  margin-bottom: $space-8;
+  padding: $space-3;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+
+  @include mobile {
+    gap: $space-1;
+    margin-bottom: $space-6;
+  }
+}
+
+.categoryTab {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border: none;
+  border-radius: $radius-lg;
+  background: transparent;
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $gray-600;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: $gray-100;
+    color: $gray-900;
+  }
+
+  @include mobile {
+    padding: $space-2 $space-3;
+    font-size: $text-xs;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.categoryTabActive {
+  background: $color-accent;
+  color: $color-white;
+
+  &:hover {
+    background: $color-accent-dark;
+    color: $color-white;
+  }
+}
+
+// ===================== RESULTS =====================
+.resultsCount {
+  font-size: $text-sm;
+  color: $gray-500;
+  margin-bottom: $space-6;
+}
+
+.loading {
+  text-align: center;
+  padding: $space-16 0;
+  font-size: $text-lg;
+  color: $gray-500;
+}
+
+.empty {
+  text-align: center;
+  padding: $space-16 0;
+  @include flex-col;
+  align-items: center;
+  gap: $space-4;
+
+  svg {
+    color: $gray-300;
+  }
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $gray-700;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: $gray-500;
+    max-width: 400px;
+  }
+}
+
+// ===================== PARTNERS GRID =====================
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-5;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.partnerCard {
+  display: flex;
+  gap: $space-4;
+  padding: $space-5;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+  border: 1px solid $gray-100;
+  transition: transform $transition-slow, box-shadow $transition-slow;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.partnerLogo {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: $radius-lg;
+  background: $gray-100;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  svg {
+    color: $gray-400;
+  }
+}
+
+.partnerInfo {
+  @include flex-col;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.partnerName {
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: $weight-bold;
+  color: $gray-900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.partnerCategory {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $text-xs;
+  color: $gray-400;
+  font-weight: $weight-medium;
+}
+
+.partnerDiscount {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  color: $color-accent;
+}
+
+.partnerDesc {
+  font-size: $text-xs;
+  color: $gray-500;
+  line-height: $leading-relaxed;
+}
+
+.partnerLocation {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $text-xs;
+  color: $gray-400;
+  margin-top: $space-1;
+
+  svg {
+    min-width: 14px;
+  }
+}
+
+// ===================== CTA =====================
+.cta {
+  text-align: center;
+  margin-top: $space-12;
+  padding: $space-8;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+
+  p {
+    font-size: $text-lg;
+    font-weight: $weight-semibold;
+    color: $gray-700;
+    margin-bottom: $space-4;
+  }
+}

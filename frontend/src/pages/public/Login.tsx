@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Mail, Lock, ArrowRight } from 'lucide-react';
+import { User, Lock, ArrowRight } from 'lucide-react';
 import { Button, Input } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 import styles from './Login.module.scss';
@@ -22,7 +22,7 @@ export default function Login() {
   const location = useLocation();
   const { login, user, isAuthenticated } = useAuth();
 
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await login({ email, password });
+      await login({ identifier: identifier.trim(), password });
       // Apos login, o useEffect acima cuida do redirect
     } catch (err: unknown) {
       const apiError = err as { error?: { message?: string } };
@@ -77,13 +77,13 @@ export default function Login() {
           )}
 
           <Input
-            label="E-mail"
-            type="email"
-            icon={Mail}
-            placeholder="seu@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email"
+            label="CPF ou Email"
+            type="text"
+            icon={User}
+            placeholder="Digite seu CPF ou email"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+            autoComplete="username"
             required
           />
 

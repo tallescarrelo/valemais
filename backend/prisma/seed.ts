@@ -77,7 +77,27 @@ async function main() {
       isActive: true,
     },
   });
-  console.log(`  ✓ ${plan.name} - R$ ${(plan.price / 100).toFixed(2)}/mes\n`);
+  console.log(`  ✓ ${plan.name} - R$ ${(plan.price / 100).toFixed(2)}/mes`);
+
+  const annualPlan = await prisma.plan.create({
+    data: {
+      id: 'plan-vale-plus-anual',
+      name: 'Plano Vale+ Anual',
+      description: 'Acesso completo por 12 meses com desconto. Pagamento unico a vista.',
+      price: 19900,
+      intervalMonths: 12,
+      benefits: [
+        'Tudo do plano mensal',
+        'Economia de ~20% sobre o mensal',
+        'Pagamento unico sem recorrencia',
+        'Cartao virtual ativo na hora',
+        'Descontos em toda rede de parceiros',
+        'Sem limite de validacoes',
+      ],
+      isActive: true,
+    },
+  });
+  console.log(`  ✓ ${annualPlan.name} - R$ ${(annualPlan.price / 100).toFixed(2)}/ano\n`);
 
   // ============ 3. PARCEIROS (12 parceiros em 6 categorias) ============
   console.log('3. Criando Parceiros...');
@@ -653,17 +673,17 @@ async function main() {
   console.log('============================================');
   console.log('  SEED CONCLUIDO COM SUCESSO!');
   console.log('============================================\n');
-  console.log('Credenciais de teste (senha padrao):');
+  console.log('Credenciais de teste:');
   console.log('─────────────────────────────────────────');
-  console.log('  ADMIN:');
-  console.log('    admin@valemaisvantagens.com.br / Admin@123\n');
-  console.log('  CLIENTES (senha: Cliente@123):');
-  console.log('    cliente@teste.com.br   - Maria Santos  (ATIVO, 3 meses)');
-  console.log('    joao@teste.com.br      - Joao Oliveira (ATIVO, 2 meses)');
-  console.log('    ana@teste.com.br       - Ana Paula     (EXPIRADO)');
-  console.log('    pedro@teste.com.br     - Pedro Lima    (ATIVO, recente)');
-  console.log('    fernanda@teste.com.br  - Fernanda      (ATIVO, 1 mes)\n');
-  console.log('  PARCEIROS (senha: Parceiro@123):');
+  console.log('  ADMIN (login por CPF):');
+  console.log('    CPF 00000000000 / Admin@123\n');
+  console.log('  CLIENTES (login por CPF, senha: Cliente@123):');
+  console.log('    CPF 11122233344 - Maria Santos  (ATIVO, 3 meses)');
+  console.log('    CPF 22233344455 - Joao Oliveira (ATIVO, 2 meses)');
+  console.log('    CPF 33344455566 - Ana Paula     (EXPIRADO)');
+  console.log('    CPF 44455566677 - Pedro Lima    (ATIVO, recente)');
+  console.log('    CPF 55566677788 - Fernanda      (ATIVO, 1 mes)\n');
+  console.log('  PARCEIROS (login por email, senha: Parceiro@123):');
   console.log('    parceiro@saborcaseiro.com.br     - Sabor Caseiro');
   console.log('    parceiro@donmario.com.br         - Don Mario');
   console.log('    parceiro@paoquente.com.br        - Pao Quente');

@@ -2,7 +2,6 @@ import { z } from 'zod';
 
 export const registerSchema = z.object({
   name: z.string().min(3, 'Nome deve ter no minimo 3 caracteres'),
-  email: z.string().email('Email invalido'),
   cpf: z.string().length(11, 'CPF deve ter 11 digitos').regex(/^\d+$/, 'CPF deve conter apenas numeros'),
   phone: z.string().min(10, 'Telefone invalido').max(11, 'Telefone invalido'),
   password: z.string().min(8, 'Senha deve ter no minimo 8 caracteres'),
@@ -11,7 +10,7 @@ export const registerSchema = z.object({
 });
 
 export const loginSchema = z.object({
-  email: z.string().email('Email invalido'),
+  identifier: z.string().min(1, 'CPF ou email e obrigatorio'),
   password: z.string().min(1, 'Senha e obrigatoria'),
 });
 

@@ -18,9 +18,14 @@ export class PublicController {
     res.json({ data: plans });
   }
 
-  async getPartners(_req: Request, res: Response) {
+  async getPartners(req: Request, res: Response) {
+    const { category } = req.query;
+    const where: Record<string, unknown> = { status: 'ACTIVE' };
+    if (category && typeof category === 'string') {
+      where.category = category;
+    }
     const partners = await prisma.partner.findMany({
-      where: { status: 'ACTIVE' },
+      where,
       select: {
         id: true,
         tradeName: true,

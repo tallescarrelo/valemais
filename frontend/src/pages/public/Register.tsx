@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, Phone, FileText, ArrowRight } from 'lucide-react';
+import { Lock, User, Phone, FileText, ArrowRight } from 'lucide-react';
 import { Button, Input } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 import styles from './Register.module.scss';
@@ -35,7 +35,6 @@ export default function Register() {
   const { register, user, isAuthenticated } = useAuth();
 
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -57,7 +56,6 @@ export default function Register() {
     const errors: Record<string, string> = {};
 
     if (!name.trim()) errors.name = 'Nome e obrigatorio';
-    if (!email.trim()) errors.email = 'E-mail e obrigatorio';
     if (onlyDigits(cpf).length !== 11) errors.cpf = 'CPF deve ter 11 digitos';
     if (onlyDigits(phone).length < 10)
       errors.phone = 'Telefone deve ter pelo menos 10 digitos';
@@ -83,7 +81,6 @@ export default function Register() {
     try {
       await register({
         name: name.trim(),
-        email: email.trim(),
         cpf: onlyDigits(cpf),
         phone: onlyDigits(phone),
         password,
@@ -144,18 +141,6 @@ export default function Register() {
             onChange={(e) => setName(e.target.value)}
             error={fieldErrors.name}
             autoComplete="name"
-            required
-          />
-
-          <Input
-            label="E-mail"
-            type="email"
-            icon={Mail}
-            placeholder="seu@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            error={fieldErrors.email}
-            autoComplete="email"
             required
           />
 

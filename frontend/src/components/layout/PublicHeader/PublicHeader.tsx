@@ -6,7 +6,7 @@ import styles from './PublicHeader.module.scss';
 
 const navLinks = [
   { label: 'Inicio', path: '/' },
-  { label: 'Beneficios', path: '/#beneficios' },
+  { label: 'Vantagens', path: '/#vantagens' },
   { label: 'Parceiros', path: '/#parceiros' },
   { label: 'Como Funciona', path: '/#como-funciona' },
   { label: 'Planos', path: '/#planos' },

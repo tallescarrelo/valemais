@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Mail, Phone } from 'lucide-react';
+import { Instagram, Mail, Phone } from 'lucide-react';
 import styles from './PublicFooter.module.scss';
 
 export default function PublicFooter() {
@@ -18,11 +18,8 @@ export default function PublicFooter() {
               Seu cartao de vantagens. Descontos reais em estabelecimentos parceiros.
             </p>
             <div className={styles.social}>
-              <a href="#" aria-label="Instagram" className={styles.socialLink}>
+              <a href="https://www.instagram.com/valemaisbr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialLink}>
                 <Instagram size={20} />
-              </a>
-              <a href="#" aria-label="Facebook" className={styles.socialLink}>
-                <Facebook size={20} />
               </a>
             </div>
           </div>
@@ -31,7 +28,7 @@ export default function PublicFooter() {
           <div className={styles.column}>
             <h4 className={styles.columnTitle}>Para Voce</h4>
             <Link to="/cadastro" className={styles.link}>Quero ser cliente</Link>
-            <Link to="/#beneficios" className={styles.link}>Beneficios</Link>
+            <Link to="/#vantagens" className={styles.link}>Vantagens</Link>
             <Link to="/#planos" className={styles.link}>Planos</Link>
             <Link to="/#como-funciona" className={styles.link}>Como funciona</Link>
           </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight, ShieldCheck, QrCode, CreditCard, Users, Store, Star,
   Utensils, Scissors, Heart, Dumbbell, GraduationCap, ShoppingBag,
-  ChevronDown, ChevronUp, Check, Zap, Clock, TrendingUp,
+  ChevronDown, ChevronUp, Check, Zap, Clock,
   Phone, Sparkles
 } from 'lucide-react';
 import { Button, Badge } from '@/components/ui';
@@ -13,6 +13,7 @@ const CATEGORIES = [
   {
     icon: Utensils,
     name: 'Alimentacao',
+    key: 'FOOD',
     desc: 'Restaurantes, lanchonetes, pizzarias e padarias',
     img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',
     discount: 'Ate 20% OFF',
@@ -20,6 +21,7 @@ const CATEGORIES = [
   {
     icon: Heart,
     name: 'Saude',
+    key: 'HEALTH',
     desc: 'Farmacias, clinicas, laboratorios e oticas',
     img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80',
     discount: 'Ate 30% OFF',
@@ -27,6 +29,7 @@ const CATEGORIES = [
   {
     icon: Scissors,
     name: 'Beleza',
+    key: 'BEAUTY',
     desc: 'Saloes, barbearias, estetica e spas',
     img: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80',
     discount: 'Ate 25% OFF',
@@ -34,6 +37,7 @@ const CATEGORIES = [
   {
     icon: Dumbbell,
     name: 'Fitness',
+    key: 'ENTERTAINMENT',
     desc: 'Academias, studios de pilates e crossfit',
     img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80',
     discount: 'Ate 35% OFF',
@@ -41,6 +45,7 @@ const CATEGORIES = [
   {
     icon: GraduationCap,
     name: 'Educacao',
+    key: 'EDUCATION',
     desc: 'Cursos, escolas de idiomas e treinamentos',
     img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80',
     discount: 'Ate 40% OFF',
@@ -48,6 +53,7 @@ const CATEGORIES = [
   {
     icon: ShoppingBag,
     name: 'Servicos',
+    key: 'SERVICES',
     desc: 'Oficinas, lavanderias, pet shops e mais',
     img: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?w=600&q=80',
     discount: 'Ate 15% OFF',
@@ -111,7 +117,7 @@ const TESTIMONIALS = [
 const FAQ_ITEMS = [
   {
     q: 'O que e o Vale+ Vantagens?',
-    a: 'O Vale+ e um cartao de beneficios que oferece descontos exclusivos em uma rede de estabelecimentos parceiros. Com uma assinatura mensal acessivel, voce tem acesso a descontos reais em alimentacao, saude, beleza, fitness e muito mais.',
+    a: 'O Vale+ e um cartao de vantagens que oferece descontos exclusivos em uma rede de estabelecimentos parceiros. Com uma assinatura acessivel, voce tem acesso a descontos reais em alimentacao, saude, beleza, fitness e muito mais.',
   },
   {
     q: 'Como funciona o desconto?',
@@ -119,7 +125,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Quanto custa a assinatura?',
-    a: 'O plano Vale+ custa apenas R$ 19,90 por mes. Considerando que voce economiza em media R$ 150 a R$ 300 por mes com os descontos, o cartao se paga logo no primeiro uso.',
+    a: 'Oferecemos dois planos: Mensal por R$ 19,90/mes (sem fidelidade, cancele quando quiser) e Anual por R$ 199,00 a vista (economia de ~17%). Considerando que voce economiza em media R$ 150 a R$ 300 por mes com os descontos, o cartao se paga logo no primeiro uso.',
   },
   {
     q: 'Posso cancelar quando quiser?',
@@ -174,7 +180,7 @@ export default function Home() {
             <p className={styles.heroSubtitle}>
               O Vale+ e o cartao de vantagens que te da descontos reais em restaurantes,
               farmacias, saloes, academias e centenas de parceiros. Tudo por menos de
-              R$ 1 por dia.
+              69 centavos por dia.
             </p>
             <div className={styles.heroCtas}>
               <Link to="/cadastro">
@@ -196,20 +202,13 @@ export default function Home() {
           </div>
           <div className={styles.heroVisual}>
             <div className={styles.cardStack}>
-              <div className={styles.cardMock}>
-                <div className={styles.cardChip} />
-                <div className={styles.mockTop}>
-                  <span className={styles.mockLogo}>VALE<span>+</span></span>
-                  <span className={styles.mockBadge}>ATIVO</span>
-                </div>
-                <div className={styles.mockCode}>VM-2026-X7K9P</div>
-                <div className={styles.mockBottom}>
-                  <span>Seu Nome Aqui</span>
-                  <span>VANTAGENS</span>
-                </div>
-              </div>
+              <img
+                src="/card-model.svg"
+                alt="Cartao Vale+ Vantagens"
+                className={styles.cardImage}
+              />
               <div className={styles.floatingDiscount}>
-                <TrendingUp size={18} />
+                <Check size={16} />
                 <span>-20% no almoco</span>
               </div>
               <div className={styles.floatingValidation}>
@@ -217,6 +216,27 @@ export default function Home() {
                 <span>Desconto validado!</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ LOGO TICKER ============ */}
+      <section className={styles.logoTicker}>
+        <div className={styles.logoTickerTrack}>
+          <div className={styles.logoTickerSlide}>
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            {/* Duplicado para loop contínuo */}
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
+            <img src="/sempreodonto.png" alt="Sempre Odonto" />
           </div>
         </div>
       </section>
@@ -252,7 +272,7 @@ export default function Home() {
             {CATEGORIES.map((cat) => {
               const Icon = cat.icon;
               return (
-                <div key={cat.name} className={styles.categoryCard}>
+                <Link key={cat.name} to={`/parceiros?categoria=${cat.key}`} className={styles.categoryCard}>
                   <div className={styles.categoryImage}>
                     <img src={cat.img} alt={cat.name} loading="lazy" />
                     <div className={styles.categoryOverlay} />
@@ -263,7 +283,7 @@ export default function Home() {
                     <h3>{cat.name}</h3>
                     <p>{cat.desc}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -302,7 +322,7 @@ export default function Home() {
       </section>
 
       {/* ============ BENEFICIOS ============ */}
-      <section className={styles.benefitsSection} id="beneficios">
+      <section className={styles.benefitsSection} id="vantagens">
         <div className={styles.container}>
           <div className={styles.benefitsLayout}>
             <div className={styles.benefitsLeft}>
@@ -346,43 +366,79 @@ export default function Home() {
           <div className={styles.sectionHeader}>
             <Badge variant="accent">Plano</Badge>
             <h2 className={styles.sectionTitleLight}>
-              Invista menos de <span className={styles.highlightLight}>R$ 1 por dia</span>
+              Invista menos de <span className={styles.highlightLight}>69 centavos por dia</span>
             </h2>
             <p className={styles.sectionSubtitleLight}>
               E economize centenas de reais por mes com descontos reais.
             </p>
           </div>
-          <div className={styles.planCard}>
-            <div className={styles.planPopular}>MAIS POPULAR</div>
-            <div className={styles.planHeader}>
-              <span className={styles.planName}>Vale+ Vantagens</span>
-              <div className={styles.planPrice}>
-                <span className={styles.planCurrency}>R$</span>
-                <span className={styles.planValue}>19</span>
-                <div className={styles.planCents}>
-                  <span>,90</span>
-                  <span>/mes</span>
+          <div className={styles.plansGrid}>
+            {/* Plano Mensal */}
+            <div className={styles.planCard}>
+              <div className={styles.planHeader}>
+                <span className={styles.planName}>Mensal</span>
+                <div className={styles.planPrice}>
+                  <span className={styles.planCurrency}>R$</span>
+                  <span className={styles.planValue}>19</span>
+                  <div className={styles.planCents}>
+                    <span>,90</span>
+                    <span>/mes</span>
+                  </div>
                 </div>
+                <p className={styles.planSave}>
+                  Clientes economizam em media <strong>R$ 250/mes</strong> — retorno de 12x
+                </p>
               </div>
-              <p className={styles.planSave}>
-                Clientes economizam em media <strong>R$ 250/mes</strong> — retorno de 12x
-              </p>
+              <div className={styles.planDivider} />
+              <div className={styles.planFeatures}>
+                {PLAN_FEATURES.map((f) => (
+                  <div key={f} className={styles.planFeature}>
+                    <Check size={18} />
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/cadastro" className={styles.planCta}>
+                <Button size="lg" iconRight={ArrowRight} style={{ width: '100%' }}>
+                  Quero meu cartao Vale+
+                </Button>
+              </Link>
+              <p className={styles.planNote}>Sem fidelidade. Cancele quando quiser.</p>
             </div>
-            <div className={styles.planDivider} />
-            <div className={styles.planFeatures}>
-              {PLAN_FEATURES.map((f) => (
-                <div key={f} className={styles.planFeature}>
-                  <Check size={18} />
-                  <span>{f}</span>
+
+            {/* Plano Anual */}
+            <div className={`${styles.planCard} ${styles.planCardHighlight}`}>
+              <div className={styles.planPopular}>MELHOR CUSTO</div>
+              <div className={styles.planHeader}>
+                <span className={styles.planName}>Anual</span>
+                <div className={styles.planPrice}>
+                  <span className={styles.planCurrency}>R$</span>
+                  <span className={styles.planValue}>199</span>
+                  <div className={styles.planCents}>
+                    <span>,00</span>
+                    <span>/ano</span>
+                  </div>
                 </div>
-              ))}
+                <p className={styles.planSave}>
+                  Equivale a <strong>R$ 16,58/mes</strong> — <Badge variant="accent" size="sm">~17% OFF</Badge>
+                </p>
+              </div>
+              <div className={styles.planDivider} />
+              <div className={styles.planFeatures}>
+                {PLAN_FEATURES.map((f) => (
+                  <div key={f} className={styles.planFeature}>
+                    <Check size={18} />
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/cadastro" className={styles.planCta}>
+                <Button size="lg" iconRight={ArrowRight} style={{ width: '100%' }}>
+                  Quero meu cartao Vale+
+                </Button>
+              </Link>
+              <p className={styles.planNote}>Pagamento unico. 12 meses de vantagens.</p>
             </div>
-            <Link to="/cadastro" className={styles.planCta}>
-              <Button size="lg" iconRight={ArrowRight} style={{ width: '100%' }}>
-                Comece agora — primeiro mes por R$ 9,90
-              </Button>
-            </Link>
-            <p className={styles.planNote}>Sem fidelidade. Cancele quando quiser.</p>
           </div>
         </div>
       </section>
@@ -465,7 +521,7 @@ export default function Home() {
               </h2>
               <p className={styles.partnerCtaDesc}>
                 Cadastre seu estabelecimento na rede Vale+ e atraia milhares de clientes
-                que buscam descontos. Sem custo de adesao, sem mensalidade.
+                que buscam descontos. Sem custo para o parceiro, sem mensalidade.
               </p>
               <ul className={styles.partnerCtaList}>
                 <li><Check size={18} /> Sem custo para o parceiro</li>

@@ -3,7 +3,8 @@ export type Role = 'CLIENT' | 'PARTNER' | 'ADMIN';
 export interface User {
   id: string;
   name: string;
-  email: string;
+  email?: string;
+  cpf?: string;
   role: Role;
   cardCode?: string;
   partnerId?: string;
@@ -25,7 +26,6 @@ export interface AuthResponse {
 
 export interface RegisterPayload {
   name: string;
-  email: string;
   cpf: string;
   phone: string;
   password: string;
@@ -34,7 +34,7 @@ export interface RegisterPayload {
 }
 
 export interface LoginPayload {
-  email: string;
+  identifier: string;
   password: string;
 }
 

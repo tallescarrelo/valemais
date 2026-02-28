@@ -6,12 +6,6 @@ import { AppError } from '../../../shared/errors/AppError';
 import type { RegisterInput } from '../../../interfaces/http/validators/auth.validator';
 
 export async function registerUseCase(input: RegisterInput) {
-  // Verificar se email ja existe
-  const existingEmail = await prisma.user.findUnique({ where: { email: input.email } });
-  if (existingEmail) {
-    throw AppError.conflict('Email ja cadastrado');
-  }
-
   // Verificar se CPF ja existe
   const existingCpf = await prisma.user.findUnique({ where: { cpf: input.cpf } });
   if (existingCpf) {
@@ -31,7 +25,6 @@ export async function registerUseCase(input: RegisterInput) {
   const user = await prisma.user.create({
     data: {
       name: input.name,
-      email: input.email,
       cpf: input.cpf,
       phone: input.phone,
       password: hashedPassword,
@@ -42,7 +35,7 @@ export async function registerUseCase(input: RegisterInput) {
     select: {
       id: true,
       name: true,
-      email: true,
+      cpf: true,
       cardCode: true,
       role: true,
       createdAt: true,

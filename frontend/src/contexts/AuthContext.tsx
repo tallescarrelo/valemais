@@ -54,9 +54,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const logout = useCallback(async () => {
-    await authService.logout();
-    localStorage.removeItem('user');
-    setUser(null);
+    try {
+      await authService.logout();
+    } catch {
+      // Mesmo se o backend falhar (token expirado), limpamos o estado local
+    } finally {
+      localStorage.removeItem('user');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      setUser(null);
+    }
   }, []);
 
   return (
